@@ -14,6 +14,8 @@ namespace cSharp___GDI__Graphics_Tutorial
     {
         Font myFont = new Font("Arial", 14, FontStyle.Bold);
         Pen myPen = new Pen(Brushes.Black, 5);
+        SolidBrush myBrush = new SolidBrush(Color.FromArgb(128, 0, 255, 0));
+        //SolidBrush myBrush = new SolidBrush(Color.FromArgb(128, Color.Green));
         Point[] polyPoints = new Point[4];
         public frmGraphics()
         {
@@ -50,21 +52,25 @@ namespace cSharp___GDI__Graphics_Tutorial
             e.Graphics.DrawString("hello, my name is Joe",
                 myFont, Brushes.Black, 150, 175);
             e.Graphics.DrawPie(Pens.Red, 300, 300, 100, 100, 0, 360);
-            e.Graphics.FillPie(Brushes.Green, 600, 300, 100, 100, 0, 360);
+            e.Graphics.FillPie(Brushes.White, 600, 300, 100, 100, 0, 360);
             e.Graphics.FillPie(Brushes.DarkMagenta, 450, 200, 100, 100, 90, 270);
             e.Graphics.DrawArc(Pens.DarkMagenta, 450, 50, 100, 100, 90, 270);
             e.Graphics.DrawArc(myPen, 650, 50, 100, 100, 90, 270);
             e.Graphics.DrawPolygon(myPen, polyPoints);
+            //e.Graphics.FillPolygon(Brushes.LightPink, polyPoints);
+            e.Graphics.FillPolygon(myBrush, polyPoints);
 
-            //createPolyPoints();
-            e.Graphics.FillPolygon(Brushes.LightPink, polyPoints);
+        }
+
+        private void btnPoly_Click(object sender, EventArgs e)
+        {
+            createPolyPoints();
         }
 
         private void timAppTimer_Tick(object sender, EventArgs e)
         {
             this.Refresh();
         }
-
     }
 }
 
